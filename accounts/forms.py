@@ -17,3 +17,9 @@ class Signupform(UserCreationForm):
         confirm_password = cleaned_data.get('confirm_password')
         if password != confirm_password:
             raise forms.ValidationError("password should be same" ,code= "invalid")
+
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username','email','first_name','last_name')            
