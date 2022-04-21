@@ -16,3 +16,4 @@ urlpatterns = [
     path('post/<slug:slug>',post_update_view.as_view(),name= 'edit-post'),
     path('search',search_view,name='search'),
     path('<slug:slug>',Postdetailview.as_view(), name= 'detail-page'),
+]
