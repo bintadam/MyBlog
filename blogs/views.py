@@ -88,6 +88,7 @@ class Post_create_view(LoginRequiredMixin,PermissionRequiredMixin,CreateView):
     # fields = ["title","content","status","category","image","date"]
     template_name = 'blog/post.html'
     # success_url = 'post'
+    raise_exception = True # Change is here
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

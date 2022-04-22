@@ -9,16 +9,14 @@ from django.http import HttpResponse
 # Create your views here.
 class Signup_create_view(CreateView):
     form_class = Signupform
-    template_name = 'accounts/signup.html'
+    template_name = 'account/signup.html'
     success_url = '/blog'
 
-
 class HomePageView(TemplateView):
-    template_name = 'accounts/home.html'
-
+    template_name = 'account/home.html'
 
 class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name = 'accounts/profile.html'    
+    template_name = 'account/profile.html'
 
 
 class ProfileUpdateView(LoginRequiredMixin,View):
@@ -33,7 +31,7 @@ class ProfileUpdateView(LoginRequiredMixin,View):
             'u_form':u_form,
             'p_form':p_form
         }
-        return render(request, 'accounts/profile_update.html',context)
+        return render(request, 'account/profile_update.html',context)
 
     def post(self,request):
         u_form = UserEditForm(request.POST,instance= request.user)
@@ -47,5 +45,5 @@ class ProfileUpdateView(LoginRequiredMixin,View):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            return render(request, 'accounts/profile.html',context)
+            return render(request, 'account/profile.html',context)
 
